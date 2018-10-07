@@ -1,19 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Input from '@material-ui/core/Input';
 import axios from 'axios';
 
 class ChannelMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            channelsList: [{
-                channelId: 1,
-                isChannelActive: true,
-                channelName: 'Avinash'
-            }, {
-                channelId: 2,
-                isChannelActive: false,
-                channelName: 'Damu'
-            }, {
+            subscribedChannels: [{
                 channelId: 3,
                 isChannelActive: false,
                 channelName: 'Suddu'
@@ -22,8 +15,15 @@ class ChannelMenu extends Component {
                 isChannelActive: false,
                 channelName: 'JD'
             }],
-            subscribedChannels: [],
-            unsubscribedChannels: []
+            unsubscribedChannels: [{
+                channelId: 1,
+                isChannelActive: true,
+                channelName: 'Avinash'
+            }, {
+                channelId: 2,
+                isChannelActive: false,
+                channelName: 'Damu'
+            }]
         }
     }
 
@@ -47,15 +47,20 @@ class ChannelMenu extends Component {
         return (
             <div className="channel-menu">
                 <div className="channel-menu profile">
-                    <img src={require("../images/user-icon.svg")} width="200" height="200" />
+                    <img src={require("../images/user-icon.svg")} width="200" height="200" className="profile img" />
                 </div>
                 <div className="channel-menu list">
+                    <div className="channel-menu search">
+                        <Input 
+                            className="channel-menu search-input"
+                            onClick={() => {}} 
+                        />
+                    </div>
                     <div className="channel-menu subscribed">
                         {
                             this.state.subscribedChannels.map((item, i) =>
                                 <div className="channel-menu subscribedChannel">
-                                    <h4 className="channel-menu ">{item.channelName}</h4>
-                                    <h4>{item.channelName}</h4>
+                                    <h4 className="channel-menu subscribed">{item.channelName}</h4>
                                 </div>
                             )
                         }
@@ -64,8 +69,7 @@ class ChannelMenu extends Component {
                         {
                             this.state.unsubscribedChannels.map((item, i) =>
                                 <div className="channel-menu unsubscribedChannel">
-                                    <h4 className="channel-menu ">{item.channelName}</h4>
-                                    <h4>{item.channelName}</h4>
+                                    <h4 className="channel-menu unsubscribed">{item.channelName}</h4>
                                 </div>
                             )
                         }

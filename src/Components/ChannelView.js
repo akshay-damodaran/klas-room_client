@@ -12,7 +12,10 @@ class ChannelView extends Component {
         return (
             <div className="channel-view">
                 <div className="channel-view info">
-                    <img src={require("../images/user-icon.svg")} width="50" height="50"/> 
+                    {
+                        // <h1>hi</h1>
+                        // <img src={require("../images/user-icon.svg")} width="50" height="50"/> 
+                    }
                 </div>
                 <div className="channel-view chatview">
                 </div>
