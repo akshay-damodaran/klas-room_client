@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = props => (
+const Login = ({onEmail = f => f, onPassword = f => f, onRoleSelect = f => f, onLogin = f => f}) => (
     <div>
         <h1>Login</h1>
         <div>
@@ -11,7 +11,7 @@ const Login = props => (
             <label htmlFor="role">You are a ...</label>
             <input type="radio" name="role" onChange={this.props.onRoleSelect} />
             <input type="radio" name="role" onChange={this.props.onRoleSelect} />
-            <button onClick={this.onLogin} />
+            <button onClick={this.props.onLogin} />
         </div>
     </div>
-)
+);
