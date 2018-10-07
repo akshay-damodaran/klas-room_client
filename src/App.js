@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Home from './Containers/Home';
+
 import './App.css'
 
 class App extends Component {
     render() {
         return (
             <div className='App'>
-                <h2 className='application-title'>
-                  My Chat App
-              </h2>
+                <Home
+                    mitter={this.props.mitter}
+                />
           </div>
         );
     }

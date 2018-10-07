@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import './Channel.css'
+import '../Channel.css';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
 
 export default class ChannelComponent extends Component {
     constructor() {
@@ -29,10 +31,10 @@ export default class ChannelComponent extends Component {
             return (
                 <div
                     key={channelId}
-                    className={ 'channel-tile' + ((isChannelActive) ? ' active' : '') }
+                    className={'channel-tile' + ((isChannelActive) ? ' active' : '')}
                     onClick={this.setActiveChannel(channelId)}
                 >
-                    { channelId }
+                    {this.state.channelName}
                 </div>
             )
         })
@@ -52,7 +54,7 @@ export default class ChannelComponent extends Component {
                 this.props.selfUserId === message.senderId.identifier
 
             return (
-                <div key={message.messageId} className={ 'message' + (isSelfMessage ? ' self' : '') }>
+                <div key={message.messageId} className={'message' + (isSelfMessage ? ' self' : '')}>
                     <div className='message-block'>
                         <span className='sender'>{message.senderId.identifier}</span>
 
@@ -111,25 +113,31 @@ export default class ChannelComponent extends Component {
     render() {
         return (
             <div className='chat-parent chat-panel'>
-                <div className='channel-list'>
-                    { this.renderChannelList() }
-                </div>
+                <div className='chat-parent chat-panel'>
+                    <div className='channel-list'>
+                        {this.renderChannelList()}
+                    </div>
 
-                <div className='chat-window chat-panel'>
-                    { this.renderMessages() }
+                    <div className='chat-parent chat-panel'>
+                        {this.renderMessages()}
 
-                    <div className='message-input-box'>
-                        <input
-                          ref={(input) => { this.messageInput = input }}
-                          onChange={this.updateTypedMessage}
-                          value={this.state.typedMessage}
-                          className='message-input'
-                          type='text'
-                        />
-
-                        &nbsp;
-
-                        <input onClick={this.sendMessage} className='send-message' type='submit' value='Send' />
+                        <div className='message-input-box'>
+                            <Input
+                                ref={(input) => { this.messageInput = input }}
+                                onChange={this.updateTypedMessage}
+                                value={this.state.typedMessage}
+                                className='message-input'
+                                type='text'
+                            />&nbsp;
+                            <Button
+                                variant="contained" 
+                                color="primary"
+                                onClick={this.sendMessage} 
+                                className='send-message'
+                                type="submit">
+                                Send
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -155,3 +163,4 @@ export default class ChannelComponent extends Component {
         }
     }
 }
+

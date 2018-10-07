@@ -1,0 +1,31 @@
+.channel-menu {
+    background-color: #ffffff;
+}
+
+.channel-menu > .profile {
+    background-color: #ffffff;
+}
+
+.channel-menu > .list {
+    background-color: #ffffff;
+}
+
+.channel-menu > .subscribed {
+    background-color: #ffffff;
+}
+
+.channel-menu > .unsubscribed {
+    background-color: #ffffff;
+}
+
+.channel-view {
+    background-color: #ffffff;
+}
+
+.channel-view > .info {
+    background-color: #ffffff;
+}
+
+.channel-view > .chatview {
+    background-color: #ffffff;
+}
