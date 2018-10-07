@@ -2,11 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import registerServiceWorker from './registerServiceWorker';
+import { Mitter } from '@mitter-io/web'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Enter the application id from the mitter.io panel
+const mitter = Mitter.forWeb('107N6-U7uAq-CnVJF-FLp8C')
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+    <App
+        mitter={mitter}
+    />,
+    document.getElementById('root')
+);
+
+registerServiceWorker();
