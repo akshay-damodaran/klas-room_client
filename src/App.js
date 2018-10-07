@@ -1,30 +1,43 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
-import Home from './Components/Home';
 
+import Auth from './Containers/Auth';
+import Home from './Containers/Home';
 import './App.css'
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            logged: true,
+            logged: false,
+            key: '',
         };
     }
 
     render() {
+        const {logged} = this.state;
+        const {mitter} = this.props;
         return (
-            <div>
-                <Home/>
-            </div>
+            <Switch>
+                <Route
+                    exact
+                    path="/auth"
+                    render={props => <Auth
+                        {...props}
+                        logged={logged}
+                    />}
+                />
+                <Route
+                    path="/"
+                    render={props => <Home
+                        {...props}
+                        logged={logged}
+                        mitter={mitter}
+                    />}
+                />
+                <Redirect to="/auth" />
+            </Switch>
         );
-        // return (
-        //     <Switch>
-        //         <Route exact path="/login" />
-        //         <Route path="/" />
-        //         <Redirect to="/login" />
-        //     </Switch>
-        // );
     }
 }
 
