@@ -3,7 +3,9 @@ import React, {Component} from 'react';
 class ChatView extends Component {
     render() {
         return (
-            <div></div>
+            <div className="chat-view">
+
+            </div>
         );
     }
 }

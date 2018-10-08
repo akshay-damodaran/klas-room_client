@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 import axios from 'axios';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 class ChannelMenu extends Component {
     constructor(props) {
@@ -66,7 +66,8 @@ class ChannelMenu extends Component {
 
     handleInputChange(event) {
         const searchKeyword = event.target.value;
-
+        const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
+        
     }
 
     render() {

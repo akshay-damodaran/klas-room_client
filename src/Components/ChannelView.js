@@ -62,6 +62,7 @@ class ChannelView extends Component {
                                             {
                                                 this.state.menuOptions.map((item) =>
                                                     <Tab
+                                                        key={`tab_${item.id}`}
                                                         label={item.name}
                                                         onClick={() => this.setState({ selected: item.id })}
                                                     />
