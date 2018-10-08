@@ -17,6 +17,7 @@ class Home extends Component {
     }
 
     render() {
+        const {mitter} = this.props;
         return (
             <div className="home">
                 <div className="home channel-menu">
@@ -27,6 +28,7 @@ class Home extends Component {
                 <div className="home channel-view">
                     <ChannelView
                         channelInfo={this.state.channelInfo}
+                        mitter={mitter}
                     />
                 </div>
             </div>

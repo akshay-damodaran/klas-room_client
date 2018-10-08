@@ -33,6 +33,7 @@ class ChannelView extends Component {
     }
 
     render() {
+        const {mitter} = this.props;
         return (
             <div className="channel-view">
                 {
@@ -72,7 +73,9 @@ class ChannelView extends Component {
                                 {
                                     (this.state.selected === 0) ?
                                         <div className="channel-view chat">
-                                            <ChatView />
+                                            <ChatView
+                                                mitter={mitter}
+                                            />
                                         </div>
                                         :
                                         <div className="channel-view assignments">

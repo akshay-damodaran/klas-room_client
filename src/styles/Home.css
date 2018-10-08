@@ -111,14 +111,14 @@
 
 .channel-view > .chat {
     display: flex;
-    background-color: #d3d3d3;
+    background-color: #e5f0f7;
     width: 70vw;
     height: 100%;
 }
 
 .channel-view > .assignments {
     display: flex;
-    background-color: #d3d0d0;
+    background-color: #e5f0f7;
     width: 70vw;
     height: 100%;
 }
