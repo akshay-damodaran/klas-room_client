@@ -90,31 +90,35 @@ class ChannelMenu extends Component {
                                 <List>
                                     {
                                         (this.state.searchedResults).map((item) =>
-                                            <ListItem onClick={() => this.handleClick(item)}>
-                                                <Avatar>
-                                                    <ImageIcon />
-                                                </Avatar>
-                                                <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
-                                            </ListItem>
+                                            <div>
+                                                <ListItem onClick={() => this.handleClick(item)}>
+                                                    <Avatar>
+                                                        <ImageIcon />
+                                                    </Avatar>
+                                                    <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
+                                                </ListItem>
+                                            </div>
                                         )
                                     }
                                 </List>
                             </div>
                             :
                             <div className="channel-menu list-menu">
-                            <h3>Subscribed Channels</h3>
+                                <h3>Subscribed Channels</h3>
                                 <div className="channel-menu subscribed">
                                     <List>
                                         {
                                             this.state.subscribedChannels.map((item) =>
-                                                <ListItem 
-                                                    key={`channel_${item.channelId}`}
-                                                    onClick={() => this.handleChannel(item)}>
-                                                    <Avatar>
-                                                        <ImageIcon />
-                                                    </Avatar>
-                                                    <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
-                                                </ListItem>
+                                                <div>
+                                                    <ListItem
+                                                        key={`channel_${item.channelId}`}
+                                                        onClick={() => this.handleChannel(item)}>
+                                                        <Avatar>
+                                                            <ImageIcon />
+                                                        </Avatar>
+                                                        <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
+                                                    </ListItem>
+                                                </div>
                                             )
                                         }
                                     </List>
@@ -124,8 +128,8 @@ class ChannelMenu extends Component {
                                     <List>
                                         {
                                             this.state.unsubscribedChannels.map((item) =>
-                                                <ListItem 
-                                                     key={`channel_${item.channelId}`}
+                                                <ListItem
+                                                    key={`channel_${item.channelId}`}
                                                     onClick={() => this.handleSubscribe(item)}
                                                 >
                                                     <Avatar>

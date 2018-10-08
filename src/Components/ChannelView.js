@@ -5,19 +5,24 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import NotificationsActive from '@material-ui/icons/NotificationsActive';
-import { Button } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+import ChatView from './ChatView';
+import AssignmentsView from './AssignmentsView';
 
 class ChannelView extends Component {
     constructor(props) {
         super(props);
         this.state = {
             channelInfo: this.props.channelInfo,
-            selected: 'Chat',
+            selected: 0,
             menuOptions: [{
-                id: 1,
+                id: 0,
                 name: 'Chat'
             }, {
-                id: 2,
+                id: 1,
                 name: 'Assignments'
             }]
         }
@@ -46,14 +51,33 @@ class ChannelView extends Component {
                                     </List>
                                 </div>
                                 <div className="channel-view horizontal-menu">
+                                    <AppBar position="static" color="default">
+                                        <Tabs
+                                            value={this.state.selected}
+                                            onChange={this.handleChange}
+                                            indicatorColor="primary"
+                                            textColor="primary"
+                                            fullWidth
+                                        >
+                                            {
+                                                this.state.menuOptions.map((item) =>
+                                                    <Tab
+                                                        label={item.name}
+                                                        onClick={() => this.setState({ selected: item.id })}
+                                                    />
+                                                )
+                                            }
+                                        </Tabs>
+                                    </AppBar>
                                     {
-                                        this.state.menuOptions.map((item) =>
-                                            <Button
-                                                primary={item.name}
-                                            >
-                                            {item.name}
-                                            </Button>
-                                        )
+                                        (this.state.selected == 0) ?
+                                            <div className="channel-view chat">
+                                                <ChatView/>
+                                            </div>
+                                        :
+                                            <div className="channel-view assignments">
+                                                <AssignmentsView/>
+                                            </div>
                                     }
                                 </div>
                             </div>

@@ -87,8 +87,8 @@
     background-color: rgb(232, 235, 235);
 }
 
-/* .channel-view > .channel-header */
-
-.channel-view > .notification {
-    align-items: flex-end;
+.channel-view > .chat {
+    background-color: #ffffff;
+    width: 70vw;
+    height: 86vh;
 }
