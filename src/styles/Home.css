@@ -7,6 +7,81 @@
 }
 
 .home > .channel-menu {
+    width: 30vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+}
+
+.home > .channel-view {
+    width: 70vw;
+    height: 100vh;
+    background-color: rgb(157, 158, 158);
+}
+
+.channel-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+
+.channel-menu > .profile {
+    width: 100vw;
+    height: 30vh;
+    background-color: rgb(251, 255, 255);
+    justify-content: center;
+    /* border-bottom: solid 1px #000000; */
+}
+
+.channel-menu > .profile > .img {   
+    width: 15vw;
+    height: 15vw;
+}
+
+.channel-menu > .list {
+    width: 100vw;
+    height: 69vh;
+    background-color: rgb(217, 219, 219);
+}
+
+.channel-menu > .list > .search {
+    width:28vw;
+    height: 5vh;
+    margin: 2px;
+}
+
+.channel-menu > .list > .search-input {
+    width: 100%;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.channel-menu > .list > .subscribed {
+    width: 100%;
+    background-color: white;
+    color: black;
+    border-bottom: solid 1px #000000;  
+}
+
+.channel-menu > .list > .unsubscribed {
+    width: 100%;
+    background-color: white;
+    color: black;
+}
+
+/* .home {
+    display: flex;
+    flex-direction: row;
+    background-color: #133987;
+    width: 100%;
+    height: 100vh;
+}
+
+.home > .channel-menu {
     background-color: rgb(206, 206, 206);
     width: 28%;
     height: 92%;

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import Input from '@material-ui/core/Input';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import ImageIcon from '@material-ui/icons/Image';
+import WorkIcon from '@material-ui/icons/Work';
+
 import axios from 'axios';
 
 class ChannelMenu extends Component {
@@ -47,32 +54,45 @@ class ChannelMenu extends Component {
         return (
             <div className="channel-menu">
                 <div className="channel-menu profile">
-                    <img src={require("../images/user-icon.svg")} width="200" height="200" className="profile img" />
+                    <img src={require("../images/user-icon.svg")} className="img" />
+                    <h3>{'Welcome Guest!'}</h3>
                 </div>
                 <div className="channel-menu list">
-                    <div className="channel-menu search">
-                        <Input 
-                            className="channel-menu search-input"
-                            onClick={() => {}} 
+                    <div className="list search">
+                        <Input
+                            className="list search-input"
+                            onClick={() => { }}
+                            placeholder={'Search your channel'}
                         />
                     </div>
-                    <div className="channel-menu subscribed">
-                        {
-                            this.state.subscribedChannels.map((item, i) =>
-                                <div className="channel-menu subscribedChannel">
-                                    <h4 className="channel-menu subscribed">{item.channelName}</h4>
-                                </div>
-                            )
-                        }
+                    <div className="list subscribed">
+                        <List>
+                            {
+                                this.state.subscribedChannels.map((item) =>
+                                    <ListItem>
+                                        <Avatar>
+                                            <ImageIcon />
+                                        </Avatar>
+                                        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+                                    </ListItem>
+                                )
+                            }
+                        </List>
                     </div>
-                    <div className="channel-menu unsubscribed">
-                        {
-                            this.state.unsubscribedChannels.map((item, i) =>
-                                <div className="channel-menu unsubscribedChannel">
-                                    <h4 className="channel-menu unsubscribed">{item.channelName}</h4>
-                                </div>
-                            )
-                        }
+                    <div className="list unsubscribed">
+                        <List>
+                            {
+                                this.state.unsubscribedChannels.map((item) =>
+                                    <ListItem>
+                                        <Avatar>
+                                            <ImageIcon />
+                                        </Avatar>
+                                        <h1>{item.channelName}</h1>
+                                        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
+                                    </ListItem>
+                                )
+                            }
+                        </List>
                     </div>
                 </div>
             </div>
