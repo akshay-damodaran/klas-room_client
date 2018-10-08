@@ -7,7 +7,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
-import axios from 'axios';
+// import axios from 'axios';
 // import _ from 'lodash';
 
 class ChannelMenu extends Component {
@@ -41,19 +41,19 @@ class ChannelMenu extends Component {
     }
 
     componentWillMount() {
-        axios.post({
-            url: '',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then((res) => {
-            this.setState({
-                subscribedChannels: res.data.subscribed,
-                unsubscribedChannels: res.data.unsubscribed
-            });
-        }).catch((err) => {
-            console.log(err);
-        });
+        // axios.post({
+        //     url: '',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // }).then((res) => {
+        //     this.setState({
+        //         subscribedChannels: res.data.subscribed,
+        //         unsubscribedChannels: res.data.unsubscribed
+        //     });
+        // }).catch((err) => {
+        //     console.log(err);
+        // });
     }
 
     handleChannel(item) {
@@ -65,16 +65,16 @@ class ChannelMenu extends Component {
     }
 
     handleInputChange(event) {
-        const searchKeyword = event.target.value;
-        const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
-        
+        // const searchKeyword = event.target.value;
+        // const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
+
     }
 
     render() {
         return (
             <div className="channel-menu">
                 <div className="channel-menu profile">
-                    <img src={require("../images/user-icon.svg")} className="img" />
+                    <img src={require("../images/user-icon.svg")} className="img" alt="" />
                     <h3>{'Welcome Guest!'}</h3>
                 </div>
                 <div className="channel-menu search">
@@ -110,9 +110,8 @@ class ChannelMenu extends Component {
                                     <List>
                                         {
                                             this.state.subscribedChannels.map((item) =>
-                                                <div>
+                                                <div key={`channel_${item.channelId}`}>
                                                     <ListItem
-                                                        key={`channel_${item.channelId}`}
                                                         onClick={() => this.handleChannel(item)}>
                                                         <Avatar>
                                                             <ImageIcon />

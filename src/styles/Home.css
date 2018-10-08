@@ -1,3 +1,5 @@
+/* Home */
+
 .home {
     display: flex;
     flex-direction: row;
@@ -18,6 +20,8 @@
     background-color: rgb(157, 158, 158);
 }
 
+/* ChannelMenu */
+
 .channel-menu {
     display: flex;
     flex-direction: column;
@@ -30,7 +34,6 @@
     height: 30vh;
     background-color: rgb(251, 255, 255);
     justify-content: center;
-    /* border-bottom: solid 1px #000000; */
 }
 
 .channel-menu > .profile > .img {   
@@ -67,7 +70,6 @@
     overflow-x: auto;
     width: 28vw;
     background-color: white;
-    color: black;
     margin-bottom: 10px;
     border-bottom: solid 1px #dfdddd;
     align-items: flex-start;
@@ -77,15 +79,21 @@
     width: 28vw;    
     overflow-x: auto;   
     background-color: white;
-    color: black;
     align-items: flex-start;
+}
+
+/* ChannelView */
+
+.channel-view {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
 }
 
 .channel-view > .info {
     justify-content: space-between;
     width: 70vw;
-    height: 100vh;
-    background-color: rgb(232, 235, 235);
+    background-color: #d6d6d6;
 }
 
 .channel-view > .chat {
@@ -93,4 +101,22 @@
     background-color: #ffffff;
     width: 70vw;
     height: 100%;
+}
+
+.chat-view > .chat-messages {
+
+}
+
+.chat-view > .chat-dialog {
+    width: 70vw;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+}
+
+.chat-view > .chat-input {
+    width: 60vw;
+    height: 40px;
+    font-size: 16px;
 }

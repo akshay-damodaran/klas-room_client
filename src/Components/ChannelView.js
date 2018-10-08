@@ -71,7 +71,7 @@ class ChannelView extends Component {
                                         </Tabs>
                                     </AppBar>
                                     {
-                                        (this.state.selected == 0) ?
+                                        (this.state.selected === 0) ?
                                             <div className="channel-view chat">
                                                 <ChatView/>
                                             </div>
