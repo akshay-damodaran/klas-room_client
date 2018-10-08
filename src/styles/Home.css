@@ -39,130 +39,44 @@
 }
 
 .channel-menu > .list {
-    width: 100vw;
+    width: 30vw;
     height: 69vh;
     background-color: rgb(217, 219, 219);
 }
 
-.channel-menu > .list > .search {
-    width:28vw;
-    height: 5vh;
-    margin: 2px;
+.channel-menu > .search {
+    width:30vw;
+    height: 10vh;
+    background-color: rgb(217, 219, 219);
 }
 
-.channel-menu > .list > .search-input {
-    width: 100%;
+.channel-menu > .search-input {
+    width: 28vw;
+    height: 5vh;    
     background-color: white;
     border-radius: 20px;
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
     font-size: 20px;
+    border-radius: 18px;
+    background-color: #ffffff;
 }
 
-.channel-menu > .list > .subscribed {
-    width: 100%;
+.channel-menu > .list > .list-menu > .subscribed {
+    overflow-x: auto;
+    width: 28vw;
     background-color: white;
     color: black;
-    border-bottom: solid 1px #000000;  
+    margin-bottom: 10px;
+    border-bottom: solid 1px #dfdddd;
+    align-items: flex-start;
 }
 
-.channel-menu > .list > .unsubscribed {
-    width: 100%;
+.channel-menu > .list > .list-menu > .unsubscribed {
+    width: 28vw;    
+    overflow-x: auto;   
     background-color: white;
     color: black;
+    align-items: flex-start;
 }
-
-/* .home {
-    display: flex;
-    flex-direction: row;
-    background-color: #133987;
-    width: 100%;
-    height: 100vh;
-}
-
-.home > .channel-menu {
-    background-color: rgb(206, 206, 206);
-    width: 28%;
-    height: 92%;
-    float: left;
-    margin-left: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.home > .channel-view {
-    background-color: rgb(241, 241, 245);
-    width: 68%;
-    height: 92%;
-    float: left;
-    margin-right: 2%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-} 
-
-.channel-menu {
-    background-color: #ffffff;
-}
-
-.channel-menu > .profile {
-    display: flex;
-    background-color: #ffffff;
-    position: absolute;
-    width: 26.5%;
-    height: 35%;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile > .img {
-    width: 200px;
-    height: 200px;
-    background-color: aliceblue;
-    padding: 10px;
-    border-radius: 100px;
-}
-
-.channel-menu > .list {
-    position: absolute;
-    top: 35%;
-    height: 59%;
-    align-items: center;
-    justify-content: center;
-    background-color: #4f4f50;
-    width: 26.5%;
-}
-
-.channel-menu > .search-input {   
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    width: 97%;
-    height: 100%;
-}
-
-
-
-/* .channel-menu > .list {
-    background-color: #ffffff;
-}
-
-.channel-menu > .subscribed {
-    background-color: #ffffff;
-}
-
-.channel-menu > .unsubscribed {
-    background-color: #ffffff;
-}
-
-.channel-view {
-    background-color: #ffffff;
-}
-
-.channel-view > .info {
-    background-color: #ffffff;
-}
-
-.channel-view > .chatview {
-    background-color: #ffffff;
-} */
