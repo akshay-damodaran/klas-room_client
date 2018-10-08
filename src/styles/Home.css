@@ -58,13 +58,12 @@
     width: 26.5%;
 }
 
-.channel-menu > .search-input {
+.channel-menu > .search-input {   
     margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
     width: 97%;
     height: 100%;
-    background-color: white;
 }
 
 
