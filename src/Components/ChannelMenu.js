@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Input from '@material-ui/core/Input';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -7,9 +6,6 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-
-
-// import WorkIcon from '@material-ui/icons/Work';
 
 import axios from 'axios';
 import _ from 'lodash';
@@ -60,8 +56,12 @@ class ChannelMenu extends Component {
         });
     }
 
-    handleClick(item) {
-        this.setState({ channelViewItem: item });
+    handleChannel(item) {
+        this.props.setChannel(item);
+    }
+
+    handleSubscribe(item) {
+
     }
 
     handleInputChange(event) {
@@ -102,11 +102,14 @@ class ChannelMenu extends Component {
                             </div>
                             :
                             <div className="channel-menu list-menu">
+                            <h3>Subscribed Channels</h3>
                                 <div className="channel-menu subscribed">
                                     <List>
                                         {
                                             this.state.subscribedChannels.map((item) =>
-                                                <ListItem onClick={() => this.handleClick(item)}>
+                                                <ListItem 
+                                                    key={`channel_${item.channelId}`}
+                                                    onClick={() => this.handleChannel(item)}>
                                                     <Avatar>
                                                         <ImageIcon />
                                                     </Avatar>
@@ -116,11 +119,15 @@ class ChannelMenu extends Component {
                                         }
                                     </List>
                                 </div>
+                                <h3>Unsubscribed Channels</h3>
                                 <div className="channel-menu unsubscribed">
                                     <List>
                                         {
                                             this.state.unsubscribedChannels.map((item) =>
-                                                <ListItem>
+                                                <ListItem 
+                                                     key={`channel_${item.channelId}`}
+                                                    onClick={() => this.handleSubscribe(item)}
+                                                >
                                                     <Avatar>
                                                         <ImageIcon />
                                                     </Avatar>

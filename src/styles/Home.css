@@ -52,14 +52,14 @@
 
 .channel-menu > .search-input {
     width: 28vw;
-    height: 5vh;    
+    height: 4vh;    
     background-color: white;
     border-radius: 20px;
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    font-size: 20px;
-    border-radius: 18px;
+    font-size: 18px;
+    padding-left: 10px;
     background-color: #ffffff;
 }
 
@@ -79,4 +79,16 @@
     background-color: white;
     color: black;
     align-items: flex-start;
+}
+
+.channel-view > .info {
+    justify-content: space-between;
+    width: 70vw;
+    background-color: rgb(232, 235, 235);
+}
+
+/* .channel-view > .channel-header */
+
+.channel-view > .notification {
+    align-items: flex-end;
 }

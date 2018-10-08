@@ -7,18 +7,27 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            channelInfo: false
         }
+        this.setChannel = this.setChannel.bind(this);
+    }
+
+    setChannel(channelInfo) {
+        this.setState({ channelInfo });
     }
 
     render() {
         return (
             <div className="home">
                 <div className="home channel-menu">
-                    <ChannelMenu/>
+                    <ChannelMenu
+                        setChannel={(channelInfo) => this.setChannel(channelInfo)}
+                    />
                 </div>
                 <div className="home channel-view">
-                    <ChannelView/>
+                    <ChannelView
+                        channelInfo={this.state.channelInfo}
+                    />
                 </div>
             </div>
         );
