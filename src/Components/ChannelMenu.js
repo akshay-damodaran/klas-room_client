@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 // import axios from 'axios';
-// import _ from 'lodash';
+import _ from 'lodash';
 
 class ChannelMenu extends Component {
     constructor(props) {
@@ -65,9 +65,12 @@ class ChannelMenu extends Component {
     }
 
     handleInputChange(event) {
-        // const searchKeyword = event.target.value;
-        // const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
-
+        const searchKeyword = event.target.value;
+        if (searchKeyword.length > 0) {
+            const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
+            const searchedResults = _.filter(allChannels, (o) => _.includes(o.channelName.toLowerCase(), searchKeyword.toLowerCase()));
+            this.setState({ searchedResults });
+        }
     }
 
     render() {
@@ -91,7 +94,7 @@ class ChannelMenu extends Component {
                                 <List>
                                     {
                                         (this.state.searchedResults).map((item) =>
-                                            <div>
+                                            <div key={`search_${item.id}`}>
                                                 <ListItem onClick={() => this.handleClick(item)}>
                                                     <Avatar>
                                                         <ImageIcon />

@@ -47,6 +47,12 @@
     background-color: rgb(217, 219, 219);
 }
 
+.channel-menu > .search-menu {
+    width:28vw;
+    background-color: rgb(255, 255, 255);
+    align-items: flex-start;
+}
+
 .channel-menu > .search {
     width:30vw;
     height: 10vh;
