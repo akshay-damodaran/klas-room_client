@@ -90,22 +90,42 @@
     width: 70vw;
 }
 
+.channel-view > .display {
+    justify-content: space-between;
+    width: 70vw;
+    height: 100vh;
+    background-color: #d6d6d6;
+}
+
 .channel-view > .info {
     justify-content: space-between;
     width: 70vw;
+    height: 10vh;
     background-color: #d6d6d6;
+}
+
+.channel-view > .horizontal-menu {
+    width: 70vw;
+    height: 90vh;
 }
 
 .channel-view > .chat {
     display: flex;
-    background-color: #ffffff;
+    background-color: #d3d3d3;
     width: 70vw;
     height: 100%;
 }
 
-.chat-view > .chat-messages {
-
+.channel-view > .assignments {
+    display: flex;
+    background-color: #d3d0d0;
+    width: 70vw;
+    height: 100%;
 }
+
+/* .chat-view > .chat-messages {
+
+} */
 
 .chat-view > .chat-dialog {
     width: 70vw;

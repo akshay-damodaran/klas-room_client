@@ -35,61 +35,57 @@ class ChannelView extends Component {
     render() {
         return (
             <div className="channel-view">
-                <div className="channel-view info">
-                    {
-                        (this.state.channelInfo) ?
-                            <div className="channel-view display">
-                                <div>
-                                    <List>
-                                        <ListItem onClick={() => this.handleClick(this.state.channelInfo)}>
-                                            <Avatar>
-                                                <ImageIcon />
-                                            </Avatar>
-                                            <ListItemText primary={this.state.channelInfo.channelName} secondary={"Taught by " + this.state.channelInfo.channelTeacher} color={'#'} />
-                                            <NotificationsActive className="channel-view notification" />
-                                        </ListItem>
-                                    </List>
-                                </div>
-                                <div className="channel-view horizontal-menu">
-                                    <AppBar position="static" color="default">
-                                        <Tabs
-                                            value={this.state.selected}
-                                            onChange={this.handleChange}
-                                            indicatorColor="primary"
-                                            textColor="primary"
-                                            fullWidth
-                                        >
-                                            {
-                                                this.state.menuOptions.map((item) =>
-                                                    <Tab
-                                                        key={`tab_${item.id}`}
-                                                        label={item.name}
-                                                        onClick={() => this.setState({ selected: item.id })}
-                                                    />
-                                                )
-                                            }
-                                        </Tabs>
-                                    </AppBar>
-                                    {
-                                        (this.state.selected === 0) ?
-                                            <div className="channel-view chat">
-                                                <ChatView/>
-                                            </div>
+                {
+                    (this.state.channelInfo) ?
+                        <div className="channel-view display">
+                            <div className="channel-view info">
+                                <List>
+                                    <ListItem onClick={() => this.handleClick(this.state.channelInfo)}>
+                                        <Avatar>
+                                            <ImageIcon />
+                                        </Avatar>
+                                        <ListItemText primary={this.state.channelInfo.channelName} secondary={"Taught by " + this.state.channelInfo.channelTeacher} color={'#'} />
+                                        <NotificationsActive className="channel-view notification" />
+                                    </ListItem>
+                                </List>
+                            </div>
+                            <div className="channel-view horizontal-menu">
+                                <AppBar position="static" color="default">
+                                    <Tabs
+                                        value={this.state.selected}
+                                        onChange={this.handleChange}
+                                        indicatorColor="primary"
+                                        textColor="primary"
+                                        fullWidth
+                                    >
+                                        {
+                                            this.state.menuOptions.map((item) =>
+                                                <Tab
+                                                    key={`tab_${item.id}`}
+                                                    label={item.name}
+                                                    onClick={() => this.setState({ selected: item.id })}
+                                                />
+                                            )
+                                        }
+                                    </Tabs>
+                                </AppBar>
+                                {
+                                    (this.state.selected === 0) ?
+                                        <div className="channel-view chat">
+                                            <ChatView />
+                                        </div>
                                         :
-                                            <div className="channel-view assignments">
-                                                <AssignmentsView/>
-                                            </div>
-                                    }
-                                </div>
+                                        <div className="channel-view assignments">
+                                            <AssignmentsView />
+                                        </div>
+                                }
                             </div>
-                            :
-                            <div className="channel-view homepage">
-                                <h1>{'Hi stay connected to internet'}</h1>
-                            </div>
-                    }
-                </div>
-                <div className="channel-view chatview">
-                </div>
+                        </div>
+                        :
+                        <div className="channel-view homepage">
+                            <h1>{'Hi stay connected to internet'}</h1>
+                        </div>
+                }
             </div>
         );
     }

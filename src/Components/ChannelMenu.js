@@ -17,23 +17,23 @@ class ChannelMenu extends Component {
             subscribedChannels: [{
                 channelId: 3,
                 isChannelActive: false,
-                channelName: 'Suddu',
+                channelName: 'Sub1',
                 channelTeacher: 'Sudarshana Patil'
             }, {
                 channelId: 4,
                 isChannelActive: false,
-                channelName: 'JD',
+                channelName: 'Sub2',
                 channelTeacher: 'Jagrutee Banda'
             }],
             unsubscribedChannels: [{
                 channelId: 1,
                 isChannelActive: true,
-                channelName: 'Avinash',
+                channelName: 'Sub3',
                 channelTeacher: 'Avinash Maurya'
             }, {
                 channelId: 2,
                 isChannelActive: false,
-                channelName: 'Damu',
+                channelName: 'Sub4',
                 channelTeacher: 'Akshay Damodaran'
             }],
             searchedResults: false
