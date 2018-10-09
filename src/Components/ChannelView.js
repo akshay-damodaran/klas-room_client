@@ -11,6 +11,7 @@ import Tab from '@material-ui/core/Tab';
 
 import ChatView from './ChatView';
 import AssignmentsView from './AssignmentsView';
+import { Button } from '@material-ui/core';
 
 class ChannelView extends Component {
     constructor(props) {
@@ -24,7 +25,8 @@ class ChannelView extends Component {
             }, {
                 id: 1,
                 name: 'Assignments'
-            }]
+            }],
+            notifications: false
         }
     }
 
@@ -32,8 +34,12 @@ class ChannelView extends Component {
         this.setState({ channelInfo: state.channelInfo });
     }
 
+    handleNotifications() {
+        this.setState({ notifications: true });
+    }
+
     render() {
-        const {mitter} = this.props;
+        const { mitter } = this.props;
         return (
             <div className="channel-view">
                 {
@@ -41,48 +47,57 @@ class ChannelView extends Component {
                         <div className="channel-view display">
                             <div className="channel-view info">
                                 <List>
-                                    <ListItem onClick={() => this.handleClick(this.state.channelInfo)}>
+                                    <ListItem>
                                         <Avatar>
                                             <ImageIcon />
                                         </Avatar>
                                         <ListItemText primary={this.state.channelInfo.channelName} secondary={"Taught by " + this.state.channelInfo.channelTeacher} color={'#'} />
-                                        <NotificationsActive className="channel-view notification" />
+                                        <Button onClick={() => this.handleNotifications()}>
+                                            <NotificationsActive className="channel-view notification" />
+                                        </Button>
                                     </ListItem>
                                 </List>
                             </div>
-                            <div className="channel-view horizontal-menu">
-                                <AppBar position="static" color="default">
-                                    <Tabs
-                                        value={this.state.selected}
-                                        onChange={this.handleChange}
-                                        indicatorColor="primary"
-                                        textColor="primary"
-                                        fullWidth
-                                    >
+                            {
+                                (this.state.notifications) ?
+                                    <div className="channel-view notifications">
+                                        <h1>NotificationsActive</h1>
+                                    </div>
+                                :
+                                    <div className="channel-view horizontal-menu">
+                                        <AppBar position="static" color="default">
+                                            <Tabs
+                                                value={this.state.selected}
+                                                onChange={this.handleChange}
+                                                indicatorColor="primary"
+                                                textColor="primary"
+                                                fullWidth
+                                            >
+                                                {
+                                                    this.state.menuOptions.map((item) =>
+                                                        <Tab
+                                                            key={`tab_${item.id}`}
+                                                            label={item.name}
+                                                            onClick={() => this.setState({ selected: item.id })}
+                                                        />
+                                                    )
+                                                }
+                                            </Tabs>
+                                        </AppBar>
                                         {
-                                            this.state.menuOptions.map((item) =>
-                                                <Tab
-                                                    key={`tab_${item.id}`}
-                                                    label={item.name}
-                                                    onClick={() => this.setState({ selected: item.id })}
-                                                />
-                                            )
+                                            (this.state.selected === 0) ?
+                                                <div className="channel-view chat">
+                                                    <ChatView
+                                                        mitter={mitter}
+                                                    />
+                                                </div>
+                                                :
+                                                <div className="channel-view assignments">
+                                                    <AssignmentsView />
+                                                </div>
                                         }
-                                    </Tabs>
-                                </AppBar>
-                                {
-                                    (this.state.selected === 0) ?
-                                        <div className="channel-view chat">
-                                            <ChatView
-                                                mitter={mitter}
-                                            />
-                                        </div>
-                                        :
-                                        <div className="channel-view assignments">
-                                            <AssignmentsView />
-                                        </div>
-                                }
-                            </div>
+                                    </div> 
+                            }
                         </div>
                         :
                         <div className="channel-view homepage">

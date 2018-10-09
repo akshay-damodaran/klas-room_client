@@ -26,19 +26,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    width: 30vw;
 }
 
 .channel-menu > .profile {
-    width: 100vw;
+    width: 30vw;
     height: 30vh;
     background-color: rgb(251, 255, 255);
     justify-content: center;
 }
 
-.channel-menu > .profile > .img {   
-    width: 15vw;
-    height: 15vw;
+.channel-menu > .img {   
+    width: 10vw;
+    height: 10vw;
 }
 
 .channel-menu > .list {
@@ -48,15 +48,16 @@
 }
 
 .channel-menu > .search-menu {
-    width:28vw;
+    width:30vw;
     background-color: rgb(255, 255, 255);
     align-items: flex-start;
 }
 
 .channel-menu > .search {
     width:30vw;
-    height: 10vh;
+    height: 6vh;
     background-color: rgb(217, 219, 219);
+    align-items: center;
 }
 
 .channel-menu > .search-input {
@@ -65,8 +66,6 @@
     background-color: white;
     border-radius: 20px;
     margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
     font-size: 18px;
     padding-left: 10px;
     background-color: #ffffff;
@@ -74,15 +73,15 @@
 
 .channel-menu > .list > .list-menu > .subscribed {
     overflow-x: auto;
-    width: 28vw;
+    width: 30vw;
     background-color: white;
     margin-bottom: 10px;
     border-bottom: solid 1px #dfdddd;
     align-items: flex-start;
 }
 
-.channel-menu > .list > .list-menu > .unsubscribed {
-    width: 28vw;    
+.channel-menu > .unsubscribed {
+    width: 30vw;    
     overflow-x: auto;   
     background-color: white;
     align-items: flex-start;
@@ -129,9 +128,11 @@
     height: 100%;
 }
 
-/* .chat-view > .chat-messages {
-
-} */
+.channel-view > .notifications {
+    width: 70vw;
+    height: 100%;
+    background-color: #f6f7df;
+}
 
 .chat-view > .chat-dialog {
     width: 70vw;
