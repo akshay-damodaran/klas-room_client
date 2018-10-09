@@ -8,6 +8,7 @@ import NotificationsActive from '@material-ui/icons/NotificationsActive';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import '../styles/ChannelView.css';
 
 import ChatView from './ChatView';
 import AssignmentsView from './AssignmentsView';

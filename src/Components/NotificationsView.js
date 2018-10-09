@@ -4,6 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Avatar from '@material-ui/core/Avatar';
+import '../styles/NotificationsView.css';
 
 class NotificationsView extends Component {
 

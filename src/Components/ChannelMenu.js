@@ -7,6 +7,7 @@ import ImageIcon from '@material-ui/icons/Image';
 // import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import '../styles/ChannelMenu.css';
 
 // import axios from 'axios';
 import _ from 'lodash';
