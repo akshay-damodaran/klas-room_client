@@ -116,14 +116,14 @@
 
 .channel-view > .chat {
     display: flex;
-    background-color: #e5f0f7;
+    background-color: rgba(0, 0, 0, 0.3);
     width: 70vw;
     height: 100%;
 }
 
 .channel-view > .assignments {
     display: flex;
-    background-color: #e5f0f7;
+    background-color: rgba(0, 0, 0, 0.3);
     width: 70vw;
     height: 100%;
 }
@@ -131,7 +131,27 @@
 .channel-view > .notifications {
     width: 70vw;
     height: 100%;
-    background-color: #f6f7df;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ChatView */
+
+.chat-view > .message {
+    width: 70vw;    
+    height: fit-content;
+    display: flex;
+}
+
+.chat-view > .message0 {
+    width: 50vw;    
+    height: fit-content;
+    margin: 10px;
+}
+
+.chat-view > .message1 {
+    width: 50vw;   
+    height: fit-content;
+    margin: 10px;
 }
 
 .chat-view > .chat-dialog {
@@ -146,4 +166,30 @@
     width: 60vw;
     height: 40px;
     font-size: 16px;
+}
+
+/* NotificationsView */
+
+.notifications-view {
+    display: flex;
+    /* scroll-behavior: auto; */
+    flex-direction: column;
+    align-items: flex-start; 
+    justify-content: flex-start;
+    width: 70vw;
+    height: 100%;
+}
+
+.notifications-view > .back {
+    width: 70vw;
+    height: 6vh;
+    background-color: rgba(241, 241, 241);
+    justify-content: center;
+}
+
+.notifications-view > .card-item {
+    width: 65vw;    
+    margin: 10px;
+    height: fit-content;
+    /* background-color: rgb(151, 240, 240);     */
 }

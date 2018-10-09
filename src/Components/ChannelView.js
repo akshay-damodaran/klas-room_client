@@ -11,6 +11,7 @@ import Tab from '@material-ui/core/Tab';
 
 import ChatView from './ChatView';
 import AssignmentsView from './AssignmentsView';
+import NotificationsView from './NotificationsView';
 import { Button } from '@material-ui/core';
 
 class ChannelView extends Component {
@@ -35,7 +36,7 @@ class ChannelView extends Component {
     }
 
     handleNotifications() {
-        this.setState({ notifications: true });
+        this.setState({ notifications: !this.state.notifications });
     }
 
     render() {
@@ -61,7 +62,11 @@ class ChannelView extends Component {
                             {
                                 (this.state.notifications) ?
                                     <div className="channel-view notifications">
-                                        <h1>NotificationsActive</h1>
+                                        {
+                                            <NotificationsView
+                                                handleNotifications={this.handleNotifications.bind(this)}
+                                            />
+                                        }
                                     </div>
                                 :
                                     <div className="channel-view horizontal-menu">

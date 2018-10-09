@@ -4,13 +4,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 // import axios from 'axios';
 import _ from 'lodash';
-import { Typography } from 'material-ui/styles/typography';
+// import { Typography } from 'material-ui/styles/typography';
 
 class ChannelMenu extends Component {
     constructor(props) {
