@@ -8,6 +8,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import '../styles/ChannelMenu.css';
+import ChannelListItem from './ChannelListItem';
 
 // import axios from 'axios';
 import _ from 'lodash';
@@ -90,7 +91,7 @@ class ChannelMenu extends Component {
                         className="channel-menu search-input"
                         onChange={(e) => this.handleInputChange(e)}
                         placeholder={'Search your channel'}
-                    /> 
+                    />
                 </div>
                 <div className="channel-menu list">
                     {
@@ -101,12 +102,18 @@ class ChannelMenu extends Component {
                                         (this.state.searchedResults.length > 0) ?
                                             (this.state.searchedResults).map((item) =>
                                                 <div key={`search_${item.id}`}>
-                                                    <ListItem onClick={() => this.handleClick(item)}>
-                                                        <Avatar>
-                                                            <ImageIcon />
-                                                        </Avatar>
-                                                        <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
-                                                    </ListItem>
+                                                    {
+                                                        // <ListItem onClick={() => this.handleClick(item)}>
+                                                        //     <Avatar>
+                                                        //         <ImageIcon />
+                                                        //     </Avatar>
+                                                        //     <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
+                                                        // </ListItem>
+                                                        // <img src={require("../images/user-icon.svg")} className="channel-menu " alt="" />
+                                                    }
+                                                    <ChannelListItem 
+                                                        channelInfo={item}
+                                                    />
                                                 </div>
                                             )
                                             :
@@ -133,7 +140,7 @@ class ChannelMenu extends Component {
                                                         </Avatar>
                                                         <ListItemText
                                                             classes={{ primary: '#133679' }}
-                                                            primary={item.channelName} 
+                                                            primary={item.channelName}
                                                             secondary={"Taught by " + item.channelTeacher}
                                                         />
                                                     </ListItem>
