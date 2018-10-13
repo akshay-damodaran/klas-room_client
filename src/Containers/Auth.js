@@ -5,6 +5,7 @@ import SignUp from '../Components/SignUp';
 import { Redirect } from 'react-router-dom';
 
 import * as loginActions from '../Actions/loginActions';
+import "../styles/Login.css";
 
 class Login extends React.Component {
   constructor() {
