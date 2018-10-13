@@ -26,13 +26,6 @@ class NotificationsView extends Component {
     render() {
         return (
             <div className="notifications-view">
-                <div className="notifications-view back">
-                    <Button onClick={() => this.props.handleNotifications()}>
-                        <Avatar>
-                            <ArrowBackIcon/>
-                        </Avatar>
-                    </Button>
-                </div>
                 {
                     this.state.notifications.map((item) =>
                         <div key={`notification_${item.id}`} className="notifications-view card-item">
