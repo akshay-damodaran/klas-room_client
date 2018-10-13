@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import ChannelMenu from '../Components/ChannelMenu';
 import ChannelView from '../Components/ChannelView';
 import '../styles/Home.css';
@@ -36,4 +38,11 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+    user: state.loginReducer.user,
+  });
+  
+  const mapDispatchToProps = dispatch => ({
+  });
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Home);
