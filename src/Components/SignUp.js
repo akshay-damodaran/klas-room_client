@@ -1,5 +1,7 @@
 import React from 'react';
 
+import "../styles/Login.css";
+
 class SignUp extends React.Component {
   static renderNoLoader() {
     return (
@@ -32,13 +34,13 @@ class SignUp extends React.Component {
     e.preventDefault();
     const { role } = this.state;
     const name = this.name.value;
-    const userName = this.username.value;
+    const email = this.email.value;
     const id = this.rollno.value;
     if (this.password.value.length < 8) {
       alert('Password must be of minimum 8 characters!');
     } else {
       const password = this.password.value;
-      this.props.registerCredentials({ name, userName, password, role, id });
+      this.props.registerCredentials({ name, email, password, role, id });
     }
   }
 
@@ -58,14 +60,14 @@ class SignUp extends React.Component {
           required
         />
         <br />
-        <label htmlFor="username">User Name</label>
+        <label htmlFor="email">Email Id</label>
         <input
           type="text"
           className="form-control"
-          id="username"
-          name="username"
-          ref={ref => this.username = ref}
-          placeholder="User Name"
+          id="email"
+          name="email"
+          ref={ref => this.email = ref}
+          placeholder="Email Id"
           required
         />
         <br />
@@ -81,7 +83,7 @@ class SignUp extends React.Component {
         />
         <p>Minimum length is 8 characters</p>
 
-        <label htmlFor="role">You are a ...</label>
+        <label htmlFor="role">You are a</label>
 				<label>
 					<input
 						type="radio"
@@ -100,7 +102,7 @@ class SignUp extends React.Component {
 					/>
 					Faculty
 				</label>
-
+        <br />
         {this.state.role === "student" ?
           <React.Fragment>
             <label htmlFor="rollno">Roll No</label>

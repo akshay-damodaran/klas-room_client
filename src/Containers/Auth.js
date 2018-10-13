@@ -4,6 +4,7 @@ import SignIn from '../Components/SignIn';
 import SignUp from '../Components/SignUp';
 
 import * as loginActions from '../Actions/loginActions';
+import "../styles/Login.css";
 
 class Login extends React.Component {
   constructor() {

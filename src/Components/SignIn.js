@@ -1,5 +1,7 @@
 import React from 'react';
 
+import "../styles/Login.css";
+
 class SignIn extends React.Component {
   static renderNoLoader() {
     return (
@@ -46,7 +48,7 @@ class SignIn extends React.Component {
           className="form-control"
           name="username"
           ref={(ref) => { this.username = ref; }}
-          placeholder="Domain ID"
+          placeholder="Email Id"
           required
         />
         <input
@@ -57,7 +59,8 @@ class SignIn extends React.Component {
           placeholder="Password"
           required
         />
-        <label htmlFor="role">You are a ...</label>
+        <br />
+        <label htmlFor="role">You are a</label>
 				<label>
 					<input
 						type="radio"
