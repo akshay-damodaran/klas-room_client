@@ -4,11 +4,14 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
+// import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import '../styles/ChannelMenu.css';
 
 // import axios from 'axios';
 import _ from 'lodash';
+// import { Typography } from 'material-ui/styles/typography';
 
 class ChannelMenu extends Component {
     constructor(props) {
@@ -18,23 +21,23 @@ class ChannelMenu extends Component {
                 channelId: 3,
                 isChannelActive: false,
                 channelName: 'Sub1',
-                channelTeacher: 'Sudarshana Patil'
+                channelTeacher: 'ABC'
             }, {
                 channelId: 4,
                 isChannelActive: false,
                 channelName: 'Sub2',
-                channelTeacher: 'Jagrutee Banda'
+                channelTeacher: 'BCD'
             }],
             unsubscribedChannels: [{
                 channelId: 1,
                 isChannelActive: true,
                 channelName: 'Sub3',
-                channelTeacher: 'Avinash Maurya'
+                channelTeacher: 'CDE'
             }, {
                 channelId: 2,
                 isChannelActive: false,
                 channelName: 'Sub4',
-                channelTeacher: 'Akshay Damodaran'
+                channelTeacher: 'DEF'
             }],
             searchedResults: false
         }
@@ -70,6 +73,8 @@ class ChannelMenu extends Component {
             const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
             const searchedResults = _.filter(allChannels, (o) => _.includes(o.channelName.toLowerCase(), searchKeyword.toLowerCase()));
             this.setState({ searchedResults });
+        } else {
+            this.setState({ searchedResults: false });
         }
     }
 
@@ -77,7 +82,7 @@ class ChannelMenu extends Component {
         return (
             <div className="channel-menu">
                 <div className="channel-menu profile">
-                    <img src={require("../images/user-icon.svg")} className="img" alt="" />
+                    <img src={require("../images/user-icon.svg")} className="channel-menu img" alt="" />
                     <h3>{'Welcome Guest!'}</h3>
                 </div>
                 <div className="channel-menu search">
@@ -85,7 +90,7 @@ class ChannelMenu extends Component {
                         className="channel-menu search-input"
                         onChange={(e) => this.handleInputChange(e)}
                         placeholder={'Search your channel'}
-                    />
+                    /> 
                 </div>
                 <div className="channel-menu list">
                     {
@@ -93,22 +98,29 @@ class ChannelMenu extends Component {
                             <div className="channel-menu search-menu">
                                 <List>
                                     {
-                                        (this.state.searchedResults).map((item) =>
-                                            <div key={`search_${item.id}`}>
-                                                <ListItem onClick={() => this.handleClick(item)}>
-                                                    <Avatar>
-                                                        <ImageIcon />
-                                                    </Avatar>
-                                                    <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
+                                        (this.state.searchedResults.length > 0) ?
+                                            (this.state.searchedResults).map((item) =>
+                                                <div key={`search_${item.id}`}>
+                                                    <ListItem onClick={() => this.handleClick(item)}>
+                                                        <Avatar>
+                                                            <ImageIcon />
+                                                        </Avatar>
+                                                        <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
+                                                    </ListItem>
+                                                </div>
+                                            )
+                                            :
+                                            <div>
+                                                <ListItem>
+                                                    <h3>{'No such subject available yet.'}</h3>
                                                 </ListItem>
                                             </div>
-                                        )
                                     }
                                 </List>
                             </div>
                             :
                             <div className="channel-menu list-menu">
-                                <h3>Subscribed Channels</h3>
+                                <h3>Your Subjects</h3>
                                 <div className="channel-menu subscribed">
                                     <List>
                                         {
@@ -119,14 +131,18 @@ class ChannelMenu extends Component {
                                                         <Avatar>
                                                             <ImageIcon />
                                                         </Avatar>
-                                                        <ListItemText primary={item.channelName} secondary={"Taught by " + item.channelTeacher} color={'#'} />
+                                                        <ListItemText
+                                                            classes={{ primary: '#133679' }}
+                                                            primary={item.channelName} 
+                                                            secondary={"Taught by " + item.channelTeacher}
+                                                        />
                                                     </ListItem>
                                                 </div>
                                             )
                                         }
                                     </List>
                                 </div>
-                                <h3>Unsubscribed Channels</h3>
+                                <h3>Add subjects to your list</h3>
                                 <div className="channel-menu unsubscribed">
                                     <List>
                                         {

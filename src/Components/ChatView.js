@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import '../styles/ChatView.css';
 
 class ChatView extends Component {
 
@@ -11,9 +14,20 @@ class ChatView extends Component {
                     id: 0,
                     messageId: 'hi',
                     senderId: {
-                        identifier: 0
+                        identifier: 0,
+                        name: 'Jack'
                     },
                     textPayload: 'Hi'
+                }
+            }, {
+                message: {
+                    id: 1,
+                    messageId: 'hi',
+                    senderId: {
+                        identifier: 1,
+                        name: 'Jane'
+                    },
+                    textPayload: 'Hello'
                 }
             }],
             typedMessage: ''
@@ -38,7 +52,7 @@ class ChatView extends Component {
             return (
                 <div key={message.messageId} className={'message' + (isSelfMessage ? ' self' : '')}>
                     <div className='message-block'>
-                        <span className='sender'>{message.senderId.identifier}</span>
+                        <span className='sender'>{message.senderId.name}</span>
 
                         <div className='message-content'>
                             {message.textPayload}
@@ -98,14 +112,16 @@ class ChatView extends Component {
                 <div className="chat-view chat-messages">
                     {
                         this.state.chatMessages.map((item) =>
-                            <div key={item.message.messageId} className={'message' + (item.message.isSelfMessage ? ' self' : '')}>
-                                <div className='message-block'>
-                                    <span className='sender'>{item.message.senderId.identifier}</span>
-
-                                    <div className='message-content'>
+                            <div key={item.message.id} className={`chat-view message`}>
+                                <Card className={`chat-view message${item.message.senderId.identifier}`}>
+                                    <CardContent>
+                                        <b>{item.message.senderId.name}</b>
+                                        <hr />
+                                    </CardContent>
+                                    <CardContent>
                                         {item.message.textPayload}
-                                    </div>
-                                </div>
+                                    </CardContent>
+                                </Card>
                             </div>
                         )
                     }
