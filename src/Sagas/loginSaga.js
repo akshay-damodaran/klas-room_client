@@ -1,20 +1,28 @@
-import { call, put } from 'redux-saga/effects';
-import { takeLatest } from 'redux-saga';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import {  } from 'redux-saga';
 
 import { postApi } from '../api';
 import { saveState } from '../localStorage';
+import env from '../conf.js';
 
 function* sendLoginCredentials({ data, history }) {
   yield put({ type: 'LOGIN_PENDING' });
-  const url = '';
+  const url = env.apiUrl + 'login/signin';
   const { isError, response } = yield call(postApi, url, data);
   if (isError) {
     yield put({ type: 'LOGIN_PENDING' });
   } else if (response.data.statusCode === 200) {
+    const { name, email, token } = response.data;
+    const storeData = {
+      name,
+      email,
+      token,
+      role: data.role,
+    }
     yield put({
       type: 'SET_USER_DETAIL',
       payload: {
-        data: response.data.result,
+        data: storeData,
       },
     });
     history.push('/'); // Homepage route
@@ -22,7 +30,7 @@ function* sendLoginCredentials({ data, history }) {
       'loginReducer',
       {
         logged: true,
-        user: response.data.result,
+        user: storeData,
       },
     );
   } else if (response.data.statusCode === 401) {

@@ -5,6 +5,8 @@ const initialState = {
   user: {
     id: -1,
     name: '',
+    role: 'student',
+    token: '',
   },
   errorMessage: '',
 };

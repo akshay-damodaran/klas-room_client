@@ -1,5 +1,4 @@
 import React from 'react';
-import md5 from 'md5';
 
 class SignUp extends React.Component {
   static renderNoLoader() {
@@ -31,17 +30,20 @@ class SignUp extends React.Component {
 
   handleRegister(e) {
     e.preventDefault();
+    const { role } = this.state;
     const name = this.name.value;
     const userName = this.username.value;
+    const id = this.rollno.value;
     if (this.password.value.length < 8) {
       alert('Password must be of minimum 8 characters!');
     } else {
       const password = this.password.value;
-      this.props.registerCredentials({ name, userName, password });
+      this.props.registerCredentials({ name, userName, password, role, id });
     }
   }
 
   render() {
+    const { role } = this.state;
     return (
       <div>
         <h2 className="form-signin-heading">Register</h2>
@@ -120,8 +122,8 @@ class SignUp extends React.Component {
               className="form-control"
               id="rollno"
               name="rollno"
-              ref={ref => this.name = ref}
-              placeholder="Name"
+              ref={ref => this.rollno = ref}
+              placeholder="Employee Id"
               required
             />
           </React.Fragment>

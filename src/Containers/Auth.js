@@ -1,70 +1,84 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import SignIn from '../Components/SignIn';
+import SignUp from '../Components/SignUp';
 
-import Login from '../Components/Login';
-import Register from '../Components/Register';
-import apiUrl from '../conf';
+import * as loginActions from '../Actions/loginActions';
 
-class Auth extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            login: true,
-            role: "student"
-        };
+class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      alreadyUser: true,
+      forgotPassword: false,
+    };
+  }
+
+  componentWillMount() {
+    if (this.props.login.logged) {
+      // Redirect to home page
     }
+  }
 
-    onChange(key, value) {
-        this.setState({
-            [key]: value,
-        });
-    }
+  forgotPassword() {
+    this.setState({
+      forgotPassword: !this.state.forgotPassword,
+    });
+  }
 
-    async onLogin() {
-        const {email, password, role} = this.state;
-        const response = await axios.post(`${apiUrl}login/signin`, {
-            email,
-            password,
-            role,
-        });
-        this.props.setAccesstoken(response.data.token);
-    }
+  registerUser() {
+    this.setState({
+      alreadyUser: !this.state.alreadyUser,
+    });
+  }
 
-    renderLogin() {
-        const { login } = this.state;
-        return (
-            <Login
-                role={this.state.role}
-                onEmail={value => this.onChange('email', value)}
-                onPassword={value => this.onChange('password', value)}
-                onRoleChange={value => this.onChange('role', value)}
-                onLogin={() => this.onLogin()}
-                toggleLogin={() => this.setState({login: !login})}
-            />
-        );
-    }
+  renderSignIn() {
+    return (
+      <SignIn
+        history={this.props.history}
+        loginPending={this.props.login.loginPending}
+        errorMessage={this.props.login.errorMessage}
+        togglePage={() => this.props.togglePage()}
+        loginCredentials={(data, history) => this.props.loginCredentials(data, history)}
+        forgotPassword={() => this.forgotPassword()}
+      />
+    );
+  }
 
-    renderRegister() {
-        return (
-            <Register
-                role={this.state.role}
-                onName={value => this.onChange('name', value)}
-                onEmail={value => this.onChange('email', value)}
-                onPassword={value => this.onChange('password', value)}
-                onRoleChange={value => this.onChange('role', value)}
-                onRegister={() => this.onRegister()}
-            />
-        )
-    }
+  renderSignUp() {
+    return (
+      <SignUp
+        togglePage={() => this.props.togglePage()}
+        registerCredentials={data => this.props.registerCredentials(data)}
+      />
+    );
+  }
 
-    render() {
-        const {login} = this.state;
-        return(
-            <div>
-                {login ? this.renderLogin() : this.renderRegister()}
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className="wrapper">
+        <form className="form-signin">
+            { this.props.login.registerPage ? this.renderSignUp() : this.renderSignIn() }
+        </form>
+      </div>
+    );
+  }
 }
 
-export default Auth;
+const mapStateToProps = state => ({
+  login: state.loginReducer,
+});
+
+const mapDispatchToProps = dispatch => ({
+  togglePage: () => {
+    dispatch(loginActions.togglePage());
+  },
+  registerCredentials: (data) => {
+    dispatch(loginActions.sendRegisterCredentials(data));
+  },
+  loginCredentials: (data, history) => {
+    dispatch(loginActions.sendLoginCredentials(data, history));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

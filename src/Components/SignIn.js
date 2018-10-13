@@ -33,7 +33,7 @@ class SignIn extends React.Component {
     const userName = this.username.value;
 		const password = this.password.value;
 		const { role } = this.state;
-    this.props.loginCredentials({ userName, password,  }, this.props.history);
+    this.props.loginCredentials({ userName, password, role }, this.props.history);
   }
 
   render() {
