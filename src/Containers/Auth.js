@@ -19,9 +19,6 @@ class Login extends React.Component {
   componentWillMount() {
     if (this.props.login.logged) {
       // Redirect to home page
-      return (
-        <Redirect to="/home" /> 
-      )
     }
   }
 
