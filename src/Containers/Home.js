@@ -197,7 +197,6 @@ class Home extends React.Component {
     }
 
     handleSearch(event) {
-        // this.setState({ searchValue: e.target.value });
         const searchKeyword = event.target.value;
         if (searchKeyword.length > 0) {
             // const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
@@ -378,8 +377,8 @@ class Home extends React.Component {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                            Klasroon
+                        <Typography className={classes.title} variant="headline" color="inherit" noWrap>
+                            <b>Klas-room</b>
                         </Typography>
                         <div className={classes.grow} />
                         <div className={classes.sectionDesktop}>

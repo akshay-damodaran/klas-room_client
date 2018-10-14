@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SignIn from '../Components/SignIn';
 import SignUp from '../Components/SignUp';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 import * as loginActions from '../Actions/loginActions';
 import "../styles/Login.css";
@@ -19,6 +19,7 @@ class Login extends React.Component {
   componentWillMount() {
     if (this.props.login.logged) {
       // Redirect to home page
+      // <Redirect to="/" />
     }
   }
 

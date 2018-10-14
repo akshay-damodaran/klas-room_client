@@ -34,7 +34,7 @@ class ChannelView extends Component {
     }
 
     render() {
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return (
             <div className="channel-view">
                 <div className="channel-view info">
