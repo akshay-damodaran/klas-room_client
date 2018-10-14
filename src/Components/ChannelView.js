@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
-import NotificationsActive from '@material-ui/icons/NotificationsActive';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -18,7 +11,6 @@ import '../styles/ChannelView.css';
 
 import ChatView from './ChatView';
 import AssignmentsView from './AssignmentsView';
-import { Button } from '@material-ui/core';
 
 class ChannelView extends Component {
 

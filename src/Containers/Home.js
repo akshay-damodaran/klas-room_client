@@ -14,7 +14,6 @@ import Divider from '@material-ui/core/Divider';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import InputBase from '@material-ui/core/InputBase';
@@ -26,7 +25,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import SettingsIcon from '@material-ui/icons/Settings';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
@@ -177,6 +175,7 @@ class Home extends React.Component {
             contentView: {
                 name: 'addChannel'
             },
+            selectedSubject: 0
         };
     }
 
@@ -184,10 +183,11 @@ class Home extends React.Component {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
     };
 
-    setContentView(component, item) {
+    setContentView(component, item, index) {
         this.setState({
             contentView: { name: component, item },
-            mobileOpen: (this.state.mobileMoreAnchorEl) && !this.state.mobileOpen
+            mobileOpen: (this.state.mobileMoreAnchorEl) && !this.state.mobileOpen,
+            selectedSubject: (component === 'channelView') ? index: this.state.seleselectedSubjectctedIndex
         });
     }
 
@@ -271,7 +271,10 @@ class Home extends React.Component {
                         {
                             this.state.subjectList.map((item, i) =>
                                 <div key={`subjectItem${i}`}>
-                                    <ListItem button onClick={() => this.setContentView('channelView', item)}>
+                                    <ListItem
+                                        button
+                                        selected={this.state.selectedSubject === i}
+                                        onClick={() => this.setContentView('channelView', item, i)}>
                                         <ListItemIcon>
                                             {item.menuIcon}
                                         </ListItemIcon>
