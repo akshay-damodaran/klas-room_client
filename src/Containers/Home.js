@@ -76,7 +76,7 @@ const styles = theme => ({
         // width: '100%',
         paddingTop: appBarHeight,
         display: 'flex',
-        flex: 1,
+        flexGrow: 1,
         height: '100%',
         backgroundColor: theme.palette.background.default,
         // padding: theme.spacing.unit * 3,
