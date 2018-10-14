@@ -28,6 +28,8 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
+import _ from 'lodash';
+
 import ChannelView from '../Components/ChannelView';
 import AddChannel from '../Components/AddChannel';
 import Profile from '../Components/Profile';
@@ -164,10 +166,12 @@ class Home extends React.Component {
             anchorEl: null,
             mobileMoreAnchorEl: null,
             subjectList: [{
+                id: 112,
                 menuIcon: <ChromeReaderModeIcon />,
                 subjectName: 'Data Structures',
                 teacherName: 'R. K. Hyde'
             }, {
+                id: 113,
                 menuIcon: <ChromeReaderModeIcon />,
                 subjectName: 'Algorithms & Complexity',
                 teacherName: 'R. K. Hyde'
@@ -175,7 +179,8 @@ class Home extends React.Component {
             contentView: {
                 name: 'addChannel'
             },
-            selectedSubject: 0
+            selectedSubject: 112,
+            searchedResults: false
         };
     }
 
@@ -187,8 +192,21 @@ class Home extends React.Component {
         this.setState({
             contentView: { name: component, item },
             mobileOpen: (this.state.mobileMoreAnchorEl) && !this.state.mobileOpen,
-            selectedSubject: (component === 'channelView') ? index: this.state.seleselectedSubjectctedIndex
+            selectedSubject: (component === 'channelView') ? index : this.state.seleselectedSubjectctedIndex
         });
+    }
+
+    handleSearch(event) {
+        // this.setState({ searchValue: e.target.value });
+        const searchKeyword = event.target.value;
+        if (searchKeyword.length > 0) {
+            // const allChannels = this.state.subscribedChannels.concat(this.state.unsubscribedChannels);
+            const allChannels = this.state.subjectList;
+            const searchedResults = _.filter(allChannels, (o) => _.includes(o.subjectName.toLowerCase(), searchKeyword.toLowerCase()));
+            this.setState({ searchedResults });
+        } else {
+            this.setState({ searchedResults: false });
+        }
     }
 
     renderContent() {
@@ -265,24 +283,45 @@ class Home extends React.Component {
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
                                 }}
+                                // value={this.state.searchValue}
+                                onChange={(e) => this.handleSearch(e)}
                             />
                         </div>
                         <Divider />
                         {
-                            this.state.subjectList.map((item, i) =>
-                                <div key={`subjectItem${i}`}>
-                                    <ListItem
-                                        button
-                                        selected={this.state.selectedSubject === i}
-                                        onClick={() => this.setContentView('channelView', item, i)}>
-                                        <ListItemIcon>
-                                            {item.menuIcon}
-                                        </ListItemIcon>
-                                        <ListItemText primary={item.subjectName} secondary={item.teacherName} />
-                                    </ListItem>
-                                    <Divider />
-                                </div>
-                            )
+                            (this.state.searchedResults) ?
+                                (this.state.searchedResults.length > 0) ?
+                                    this.state.searchedResults.map((item, i) =>
+                                        <div key={`subjectItem${i}`}>
+                                            <ListItem
+                                                button
+                                                selected={this.state.selectedSubject === item.id}
+                                                onClick={() => this.setContentView('channelView', item, i)}>
+                                                <ListItemIcon>
+                                                    {item.menuIcon}
+                                                </ListItemIcon>
+                                                <ListItemText primary={item.subjectName} secondary={item.teacherName} />
+                                            </ListItem>
+                                            <Divider />
+                                        </div>
+                                    )
+                                    :
+                                    <h4 style={{ paddingLeft: 16, paddingRight: 16 }}>{'No such subject available..'}</h4>                           
+                                :
+                                this.state.subjectList.map((item, i) =>
+                                    <div key={`subjectItem${i}`}>
+                                        <ListItem
+                                            button
+                                            selected={this.state.selectedSubject === item.id}
+                                            onClick={() => this.setContentView('channelView', item, i)}>
+                                            <ListItemIcon>
+                                                {item.menuIcon}
+                                            </ListItemIcon>
+                                            <ListItemText primary={item.subjectName} secondary={item.teacherName} />
+                                        </ListItem>
+                                        <Divider />
+                                    </div>
+                                )
                         }
                     </div>
                 </List>
